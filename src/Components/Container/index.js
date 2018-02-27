@@ -1,18 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import initstore from '../../redux/stores';
+import LoginBox from '../LoginBox';
+import './container.css';
 
-class Main extends React.Component {
+class Container extends React.Component {
   render() {
     return (
-      <div>
-        <Header />
-        <Container />
-        <Footer />
+      <div className="Container-wrapper">
+        <LoginBox />
       </div>
     );
   }
 }
 
-ReactDOM.render(<Provider store={initstore()}><Main /></Provider>, document.getElementById('root'));
+export default Container;

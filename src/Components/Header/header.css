@@ -2,11 +2,12 @@
   font-family: "Helvetica", sans-serif;
   color:white;
   margin-left: 20px;
-  padding: 10px;
+  padding: 0px;
+  display: flex;
+  flex-grow: 1;
 }
 
 .Header-container{
   background-color: black;
   display: flex;
-  flex-grow: 1;
 }

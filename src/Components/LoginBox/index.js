@@ -9,8 +9,12 @@ const identifyUserAndRedirect = (props, username) => {
     fetch('/users', {
       method: 'POST',
       body: JSON.stringify({ username }),
-    }).then(response => response.json()).then(() => {
-      props.changeScreen(1);
+    }).then(response => response.json()).then((response) => {
+      if (response.markedOptions) {
+        props.setOptionsMarked(response.markedOptions);
+      }
+      props.changeUsername(username);
+      props.changeScreen(2);
     });
   }
 };

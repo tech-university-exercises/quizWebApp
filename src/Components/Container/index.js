@@ -1,16 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LoginBox from '../LoginBox';
-import QuestionList from '../QuestionList';
+import Questions from '../QuestionScreen';
 import './container.css';
 
 class Container extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       showScreen: 1,
+      numberOfQuestions: 0,
+      optionsMarked: {},
+      allQuestionsArray: [],
     };
   }
+  componentDidMount() {
+    fetch('/getQuestion').then(response => response.json()).then((response) => {
+      this.setState({
+        allQuestionsArray: response,
+        numberOfQuestions: response.length,
+      });
+    });
+  }
   render() {
+    const setOptionsMarked = (newOptionsToBeMarked) => {
+      this.setState({
+        optionsMarked: newOptionsToBeMarked,
+      });
+    };
+
     const changeScreen = (screenNumber) => {
       this.setState({
         showScreen: screenNumber,
@@ -19,7 +37,10 @@ class Container extends React.Component {
     if (this.state.showScreen === 1) {
       return (
         <div className="Container-wrapper">
-          <LoginBox changeScreen={(screenNumber) => {
+          <LoginBox
+            setOptionsMarked={setOptionsMarked}
+            changeUsername={this.props.changeUsername}
+            changeScreen={(screenNumber) => {
             changeScreen(screenNumber);
           }}
           />
@@ -27,8 +48,10 @@ class Container extends React.Component {
       );
     } else if (this.state.showScreen === 2) {
       return (
-        <QuestionList
+        <Questions
           username={this.state.username}
+          allQuestionsArray={this.state.allQuestionsArray}
+          optionsMarked={this.state.optionsMarked}
           changeScreen={(screenNumber) => {
           changeScreen(screenNumber);
         }}
@@ -38,4 +61,7 @@ class Container extends React.Component {
   }
 }
 
+Container.propTypes = {
+  changeUsername: PropTypes.func.isRequired,
+};
 export default Container;

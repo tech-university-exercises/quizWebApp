@@ -1,0 +1,12 @@
+.Header-title{
+  font-family: "Helvetica", sans-serif;
+  color:white;
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.Header-container{
+  background-color: black;
+  display: flex;
+  flex-grow: 1;
+}

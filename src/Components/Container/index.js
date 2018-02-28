@@ -9,7 +9,7 @@ class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showScreen: 3,
+      showScreen: 1,
       optionsMarked: {},
       allQuestionsArray: [],
     };
@@ -29,9 +29,16 @@ class Container extends React.Component {
     };
 
     const changeScreen = (screenNumber) => {
-      this.setState({
-        showScreen: screenNumber,
-      });
+      if (screenNumber === 1) {
+        this.setState({
+          showScreen: screenNumber,
+          optionsMarked: {},
+        });
+      } else {
+        this.setState({
+          showScreen: screenNumber,
+        });
+      }
     };
     if (this.state.showScreen === 1) {
       return (
@@ -63,6 +70,8 @@ class Container extends React.Component {
         changeScreen={(screenNumber) => {
             changeScreen(screenNumber);
         }}
+        changeUsername={this.props.changeUsername}
+        username={this.props.username}
         optionsMarked={this.state.optionsMarked}
         allQuestionsArray={this.state.allQuestionsArray}
       />

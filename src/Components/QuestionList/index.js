@@ -6,7 +6,13 @@ import './questionlist.css';
 class QuestionList extends React.Component {
   render() {
     const populateQuestion = () => this.props.allQuestionsArray
-      .map(eachEntry => <EachQuestion question={eachEntry} />);
+      .map((eachEntry, index) => (<EachQuestion
+        username={this.props.username}
+        setOptionsMarked={this.props.setOptionsMarked}
+        wasChecked={this.props.optionsMarked[eachEntry.questionId]}
+        index={index + 1}
+        question={eachEntry}
+      />));
     return (
       <div>
         {populateQuestion()}
@@ -16,5 +22,9 @@ class QuestionList extends React.Component {
 }
 QuestionList.propTypes = {
   allQuestionsArray: PropTypes.array.isRequired,
+  optionsMarked: PropTypes.object.isRequired,
+  username: PropTypes.string.isRequired,
+  setOptionsMarked: PropTypes.func.isRequired,
 };
+
 export default QuestionList;

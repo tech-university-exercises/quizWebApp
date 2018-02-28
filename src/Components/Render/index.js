@@ -8,7 +8,7 @@ class Main extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: '',
+      username: 'anmol',
     };
   }
   render() {

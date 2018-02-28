@@ -49,8 +49,9 @@ class Container extends React.Component {
     } else if (this.state.showScreen === 2) {
       return (
         <Questions
-          username={this.state.username}
+          username={this.props.username}
           allQuestionsArray={this.state.allQuestionsArray}
+          setOptionsMarked={setOptionsMarked}
           optionsMarked={this.state.optionsMarked}
           changeScreen={(screenNumber) => {
           changeScreen(screenNumber);
@@ -58,10 +59,14 @@ class Container extends React.Component {
         />
       );
     }
+    return (
+      <div>Anmol</div>
+    );
   }
 }
 
 Container.propTypes = {
   changeUsername: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
 };
 export default Container;

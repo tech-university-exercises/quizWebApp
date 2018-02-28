@@ -9,8 +9,10 @@ class QuestionScreen extends React.Component {
     return (
       <div>
         <QuestionList
+          username={this.props.username}
+          setOptionsMarked={this.props.setOptionsMarked}
           optionsMarked={this.props.optionsMarked}
-          allQuestionsArray={this.state.allQuestionsArray}
+          allQuestionsArray={this.props.allQuestionsArray}
         />
         <div className="Score-calculate">Calculate</div>
       </div>
@@ -19,7 +21,11 @@ class QuestionScreen extends React.Component {
 }
 
 QuestionScreen.propTypes = {
-  optionsMarked: PropTypes.object.isRequired,
+  optionsMarked: PropTypes.object,
   allQuestionsArray: PropTypes.array.isRequired,
+  username: PropTypes.string.isRequired,
+};
+QuestionScreen.defaultProps = {
+  optionsMarked: {},
 };
 export default QuestionScreen;

@@ -1,0 +1,19 @@
+.EachQuestion-wrapper{
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  font-family: "Helvetica", sans-serif;
+  margin-top: 20px;
+}
+
+.EachQuestion-title{
+  border: 1px solid black;
+  display: flex;
+  flex-grow: 1;
+}
+
+.EachQuestion-question{
+  text-align: center;
+  background-color: rgb(68,199,245);
+}

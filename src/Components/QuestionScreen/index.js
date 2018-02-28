@@ -5,6 +5,12 @@ import QuestionList from '../QuestionList';
 import './questionscreen.css';
 
 class QuestionScreen extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      buttonFeature: true,
+    };
+  }
   render() {
     const calculateScore = (props) => {
       let score = 0;
@@ -27,6 +33,9 @@ class QuestionScreen extends React.Component {
         />
         <div className="Score-calculate">
           <button
+            disabled={
+            !(Object.keys(this.props.optionsMarked).length === this.props.allQuestionsArray.length)
+            }
             className="Calculate-button"
             onClick={() => {
             fetch('/scores', {

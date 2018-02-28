@@ -7,18 +7,24 @@ const optionSelectionMade = (event, props) => {
   console.log(event.target.value, event.target.name, props.username);
   fetch('/question', {
     method: 'POST',
-    body: JSON.stringify({ username: props.username, questionId: event.target.name, option: event.target.value }),
+    body: JSON.stringify({
+      username: props.username,
+      questionId: event.target.name,
+      option: event.target.value,
+    }),
+  }).then(response => response.json()).then((response) => {
+    props.setOptionsMarked(response);
   });
 };
 
 const populateOptions = (props) => {
   const optionsDivArray = [];
-  console.log(props.wasChecked);
   for (const option in props.question.options) {
     // console.log(props.question.options[option]);
-    optionsDivArray.push(<div>
+    optionsDivArray.push(<div className="EachQuestion-radio">
       <input
         type="radio"
+        checked={props.wasChecked === props.question.options[option]}
         onChange={(event) => { optionSelectionMade(event, props); }}
         name={props.question.questionId}
         value={props.question.options[option]}

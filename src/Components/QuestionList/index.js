@@ -14,7 +14,7 @@ class QuestionList extends React.Component {
         question={eachEntry}
       />));
     return (
-      <div>
+      <div className="Question-list-wrapper">
         {populateQuestion()}
       </div>
     );

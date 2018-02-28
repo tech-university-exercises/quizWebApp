@@ -1,13 +1,28 @@
-.Header-title{
+.Main-Header-title{
   font-family: "Helvetica", sans-serif;
   color:white;
+  font-size: 30px;
   margin-left: 20px;
   padding: 0px;
   display: flex;
   flex-grow: 1;
 }
 
-.Header-container{
+.Main-Header-container{
   background-color: black;
   display: flex;
+  padding: 3%;
+  flex-direction: row;
+}
+
+.Main-Header-expand{
+  display: flex;
+  flex-grow: 1;
+}
+
+.Main-Header-username{
+  font-family: "Helvetica", sans-serif;
+  font-weight: 600;
+  font-size: 35px;
+  color: white;
 }

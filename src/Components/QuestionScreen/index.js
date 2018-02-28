@@ -7,7 +7,7 @@ import './questionscreen.css';
 class QuestionScreen extends React.Component {
   render() {
     return (
-      <div>
+      <div className="QuestionScreen-list-and-button">
         <QuestionList
           username={this.props.username}
           setOptionsMarked={this.props.setOptionsMarked}

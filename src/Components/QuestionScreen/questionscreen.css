@@ -1,0 +1,4 @@
+.QuestionScreen-list-and-button{
+  display: flex;
+  flex-direction: column;
+}

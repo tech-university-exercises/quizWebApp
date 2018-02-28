@@ -14,7 +14,15 @@ class QuestionScreen extends React.Component {
           optionsMarked={this.props.optionsMarked}
           allQuestionsArray={this.props.allQuestionsArray}
         />
-        <div className="Score-calculate">Calculate</div>
+        <div className="Score-calculate">
+          <button
+            className="Calculate-button"
+            onClick={() => {
+            this.props.changeScreen(3);
+          }}
+          ><span>Calculate</span>
+          </button>
+        </div>
       </div>
     );
   }
@@ -24,6 +32,7 @@ QuestionScreen.propTypes = {
   optionsMarked: PropTypes.object,
   allQuestionsArray: PropTypes.array.isRequired,
   username: PropTypes.string.isRequired,
+  changeScreen: PropTypes.func.isRequired,
 };
 QuestionScreen.defaultProps = {
   optionsMarked: {},

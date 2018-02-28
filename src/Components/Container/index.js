@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LoginBox from '../LoginBox';
 import Questions from '../QuestionScreen';
+import LeaderBoard from '../LeaderBoard';
 import './container.css';
 
 class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showScreen: 1,
-      numberOfQuestions: 0,
+      showScreen: 3,
       optionsMarked: {},
       allQuestionsArray: [],
     };
@@ -18,7 +18,6 @@ class Container extends React.Component {
     fetch('/getQuestion').then(response => response.json()).then((response) => {
       this.setState({
         allQuestionsArray: response,
-        numberOfQuestions: response.length,
       });
     });
   }
@@ -60,7 +59,13 @@ class Container extends React.Component {
       );
     }
     return (
-      <div>Anmol</div>
+      <LeaderBoard
+        changeScreen={(screenNumber) => {
+            changeScreen(screenNumber);
+        }}
+        optionsMarked={this.state.optionsMarked}
+        allQuestionsArray={this.state.allQuestionsArray}
+      />
     );
   }
 }
